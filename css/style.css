@@ -24,8 +24,14 @@ font-family: 'Audiowide', cursive;
 }
 
 .result-box{
+height:25%;
 width: 80%;
 border: 1px dashed #000;
 border-radius: 5px;
 padding: 20px;
+}
+
+.dl-horizontal{
+    margin: 0;
+    padding: 0;
 }

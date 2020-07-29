@@ -1,30 +1,28 @@
 <?php
 class Ship
 {
-    private $name;
+    public $name;
 
-    private $weaponPower = 0;
+    public $weaponPower = 0;
 
-    private $jediFactor = 0;
+    private int $jediFactor = 0;
 
-    private $strength = 0;
+    public int $strength = 0;
 
-    private $underRepair;
+    private bool $underRepair;
 
     public function __construct($name)
     {
         $this->name = $name;
-        $this->underRepair = mt_rand(1, 100) < 30;
+        try {
+            $this->underRepair = random_int(1, 100) < 30;
+        } catch (Exception $e) {
+        }
     }
 
-    public function isFunctional()
+    public function isFunctional(): bool
     {
         return !$this->underRepair;
-    }
-
-    public function sayHello()
-    {
-        echo 'HELLO';
     }
 
     public function getName()
@@ -32,7 +30,7 @@ class Ship
         return $this->name;
     }
 
-    public function getNameAndSpecs($useShortFormat = false)
+    public function getNameAndSpecs($useShortFormat = false): ?string
     {
         if ($useShortFormat) {
             return sprintf(
@@ -53,21 +51,21 @@ class Ship
         }
     }
 
-    public function doesGivenShipHaveMoreStrength($givenShip)
+    public function doesGivenShipHaveMoreStrength($givenShip): bool
     {
         return $givenShip->strength > $this->strength;
     }
 
-    public function setStrength($strength)
+    public function setStrength($strength): void
     {
         if (!is_numeric($strength)) {
-            throw new Exception('Invalid strength passed'.$strength);
+            throw new \RuntimeException('Invalid strength passed'.$strength);
         }
 
         $this->strength = $strength;
     }
 
-    public function getStrength()
+    public function getStrength(): int
     {
         return $this->strength;
     }
