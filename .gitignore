@@ -1,2 +1,6 @@
 /.idea/
 /vendor/
+init_db.php
+resources/init_db.php
+resources/JsonFileShipStorage.php
+resources/ships.json
